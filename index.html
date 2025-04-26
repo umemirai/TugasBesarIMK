@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pop-up Tes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .popup {
+      display: none; /* Awalnya disembunyikan */
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 2rem;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 16px;
+      position: relative;
+      text-align: center;
+    }
+
+    .close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: purple;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Tombol untuk memunculkan popup -->
+<button onclick="togglePopup('loginPopup')">Masuk</button>
+
+<!-- Popup -->
+<div class="popup" id="loginPopup">
+  <div class="popup-content">
+    <span class="close" onclick="togglePopup('loginPopup')">&times;</span>
+    <h2>Halo! 👋</h2>
+    <p>Selamat datang kembali</p>
+    <input type="text" placeholder="Nama Pengguna"><br><br>
+    <input type="email" placeholder="E-mail"><br><br>
+    <button>Masuk</button>
+  </div>
+</div>
+
+<!-- Script -->
+<script>
+  function togglePopup(id) {
+    const popup = document.getElementById(id);
+    if (popup.style.display === "flex") {
+      popup.style.display = "none";
+    } else {
+      popup.style.display = "flex";
+    }
+  }
+</script>
+
+</body>
+</html>

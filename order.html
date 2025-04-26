@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bersih-In Laundry - Pesan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Sora', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 2px solid #5e3b76;
+      background-color: white;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+    .btn-auth {
+      border: 1px solid #5e3b76;
+      background-color: #5e3b76;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      margin-left: 1rem;
+      font-family: 'Sora', sans-serif;
+    }
+    .container {
+      display: flex;
+      padding: 2rem;
+    }
+    .services {
+      flex: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .card {
+      background-color: white;
+      border-radius: 20px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .card h4 {
+      margin: 0.5rem 0 0.3rem;
+    }
+    .card p {
+      margin: 0.2rem 0;
+    }
+    .rating {
+      color: #fbc02d;
+    }
+    .btn-cart {
+      margin-top: 0.5rem;
+      background-color: #c5e1a5;
+      border: 2px solid #66bb6a;
+      padding: 0.5rem;
+      border-radius: 50%;
+      font-weight: bold;
+      cursor: pointer;
+      float: right;
+    }
+    .sidebar {
+      flex: 1;
+      margin-left: 2rem;
+    }
+    .address, .orders {
+      background-color: #ddd;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .orders h3 {
+      margin-top: 0;
+    }
+    .order-item {
+      background: white;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn-undo {
+      background-color: #ef9a9a;
+      border: none;
+      padding: 0.3rem 0.6rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-family: 'Sora', sans-serif;
+    }
+    .order-content {
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    .total-order {
+      margin-top: 1rem;
+      font-weight: bold;
+      text-align: right;
+    }
+    .address input {
+      margin-top: 0.5rem;
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Bersih-In" height="40" />
+    </div>
+    <nav>
+      <a href="#">Utama</a>
+      <a href="#">Pesan</a>
+      <a href="#">Lokasi</a>
+    </nav>
+    <div>
+      <button class="btn-auth">Masuk</button>
+      <button class="btn-auth" style="background:white; color:#5e3b76">Daftar</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="services">
+      <!-- Card elements tetap sama -->
+      <!-- Sudah ada 6 layanan -->
+    </div>
+
+    <div class="sidebar">
+      <div class="address">
+        <h4>Alamat Anda</h4>
+        <input type="text" placeholder="Masukkan alamat anda...">
+      </div>
+      <div class="orders">
+        <h3>Pesanan</h3>
+        <div id="order-list" class="order-content">
+          <p>Tidak Ada Pesanan</p>
+        </div>
+        <div id="order-total" class="total-order"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const orderList = document.getElementById('order-list');
+    const orderTotal = document.getElementById('order-total');
+    let total = 0;
+
+    function parsePrice(priceString) {
+      return parseInt(priceString.replace(/Rp\. |\./g, ''));
+    }
+
+    function updateTotal() {
+      orderTotal.innerText = total > 0 ? `Total: Rp. ${total.toLocaleString()}` : '';
+    }
+
+    function addToOrder(name, price) {
+      if (orderList.children.length === 1 && orderList.children[0].tagName === 'P') {
+        orderList.innerHTML = '';
+      }
+
+      const item = document.createElement('div');
+      item.className = 'order-item';
+
+      const span = document.createElement('span');
+      span.innerText = `${name} - ${price}`;
+
+      const undoBtn = document.createElement('button');
+      undoBtn.className = 'btn-undo';
+      undoBtn.innerText = 'Undo';
+      undoBtn.onclick = () => {
+        orderList.removeChild(item);
+        total -= parsePrice(price);
+        if (orderList.children.length === 0) {
+          orderList.innerHTML = '<p>Tidak Ada Pesanan</p>';
+        }
+        updateTotal();
+      };
+
+      item.appendChild(span);
+      item.appendChild(undoBtn);
+      orderList.appendChild(item);
+
+      total += parsePrice(price);
+      updateTotal();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bersih-In Laundry - Pesan</title>
+  <link rel="stylesheet" href="pesan.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+          <img src="LOGO1.png" alt="Logo Bersih-in" class="logo-navbar">
+        </div>
+      
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a href="landingpage.html">Utama</a></li>
+            <li><a href="pesan.html">Pesan</a></li>
+            <li><a href="TentangKami.html">Tentang Kami</a></li>
+          </ul>
+      
+          <div class="auth-buttons">
+            <a href="#" class="button button-p" onclick="togglePopup('loginPopup')">Masuk</a>
+            <a href="#" class="button button-o" onclick="togglePopup('signupPopup')">Daftar</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="popup" id="loginPopup">
+        <div class="popup-content">
+          <span class="close" onclick="togglePopup('loginPopup')">&times;</span>
+          <h2>Halo! 👋</h2>
+          <p>Selamat datang kembali</p>
+          <div class="input-group">
+            <label for="username">Nama Pengguna</label>
+            <input type="text" id="username" name="username" />
+          </div>    
+          <div class="input-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" />
+          </div>
+          <button onclick="togglePopup('loginPopup')">Masuk</button>
+          <a href="#" onclick="togglePopup('forgotEmailPopup')">Lupa kata sandi?</a>
+          <div class="separator">Masuk dengan</div>
+          <div class="social">
+            <img src="icons8-google-48.png" alt="Google">
+            <img src="icons8-facebook-48.png" alt="Facebook">
+          </div>
+          <p>Belum punya akun? <a href="#" onclick="togglePopup('signupPopup')">Daftar</a></p>
+        </div>
+      </div>
+    
+      <div class="popup" id="signupPopup">
+        <div class="popup-content">
+          <span class="close" onclick="togglePopup('signupPopup')">&times;</span>
+          <h2>Halo! 👋</h2>
+          <p>Silakan isi untuk melanjutkan</p>
+      
+          <div class="form-group">
+            <label for="username">Nama Pengguna</label>
+            <input type="text" id="username" placeholder="Masukkan nama pengguna">
+          </div>
+      
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="Masukkan email">
+          </div>
+      
+          <div class="form-group">
+            <label for="password">Kata Sandi</label>
+            <input type="password" id="password" placeholder="Buat kata sandi">
+          </div>
+      
+          <div class="form-group">
+            <label for="confirm-password">Ulangi Kata Sandi</label>
+            <input type="password" id="confirm-password" placeholder="Ulangi kata sandi">
+          </div>
+      
+          <button>Daftar</button>
+          <p>Sudah punya akun? <a href="#" onclick="togglePopup('loginPopup')">Masuk</a></p>
+        </div>
+      </div>
+      
+
+      <div class="popup" id="forgotEmailPopup">
+        <div class="popup-content">
+          <span class="close" onclick="togglePopup('forgotEmailPopup')">&times;</span>
+          <img src="password.png" alt="Reset Password" style="width: 200px;">
+          <h3>Lupa Kata Sandi?</h3>
+          <p>Masukkan email untuk mengatur ulang kata sandi</p>
+          <input type="email" placeholder="E-mail">
+          <button onclick="togglePopup('forgotCodePopup')">Konfirmasi e-mail</button>
+        </div>
+      </div>
+
+      <div class="popup" id="forgotCodePopup">
+        <div class="popup-content">
+          <div class="popup-header">
+            <span class="back" onclick="togglePopup('forgotCodePopup')">&#8592; Lupa Kata Sandi</span>
+          </div>
+          <img src="password.png" alt="Reset Password" class="popup-image">
+          
+          <h3 class="popup-title">Lupa Kata Sandi?</h3>
+          <p class="popup-desc">Masukan E-mail untuk mengatur ulang kata sandi</p>
+          
+          <div class="otp-inputs">
+            <input type="text" maxlength="1">
+            <input type="text" maxlength="1">
+            <input type="text" maxlength="1">
+            <input type="text" maxlength="1">
+          </div>
+      
+          <button class="btn-kirim">Konfirmasi kode</button>
+        </div>
+      </div>
+  <div class="container">
+    <div class="services">
+      <div class="card">
+        <img src="katalog.png" alt="Laundry Icon" />
+        <h4>Cuci Express</h4>
+        <p><strong>Rp. 15.000</strong></p>
+        <p class="rating">⭐ 4.9</p>
+        <p>Pengerjaan 75 menit</p>
+        <button class="btn-cart" onclick="addToOrder('Cuci Express', 15000)">🛒</button>
+      </div>
+      <div class="card">
+        <img src="katalog.png" alt="Laundry Icon" />
+        <h4>Cuci Reguler</h4>
+        <p><strong>Rp. 10.000</strong></p>
+        <p class="rating">⭐ 4.9</p>
+        <p>Pengerjaan 2 hari</p>
+        <button class="btn-cart" onclick="addToOrder('Cuci Reguler', 10000)">🛒</button>
+      </div>
+      <div class="card">
+        <img src="katalog.png" alt="Laundry Icon" />
+        <h4>Cuci Reguler + setrika</h4>
+        <p><strong>Rp. 15.000</strong></p>
+        <p class="rating">⭐ 4.9</p>
+        <p>Pengerjaan 2 hari</p>
+        <button class="btn-cart" onclick="addToOrder('Cuci Reguler + setrika', 15000)">🛒</button>
+      </div>
+      <div class="card">
+        <img src="katalog.png" alt="Laundry Icon" />
+        <h4>Cuci Karpet</h4>
+        <p><strong>Rp. 70.000</strong></p>
+        <p class="rating">⭐ 4.9</p>
+        <p>Pengerjaan 3 hari</p>
+        <button class="btn-cart" onclick="addToOrder('Cuci Karpet', 70000)">🛒</button>
+      </div>
+      <div class="card">
+        <img src="katalog.png" alt="Laundry Icon" />
+        <h4>Dry Clean</h4>
+        <p><strong>Rp. 15.000</strong></p>
+        <p class="rating">⭐ 4.9</p>
+        <p>Pengerjaan 1 hari</p>
+        <button class="btn-cart" onclick="addToOrder('Dry Clean', 15000)">🛒</button>
+      </div>
+      <div class="card">
+        <img src="katalog.png" alt="Laundry Icon" />
+        <h4>Setrika</h4>
+        <p><strong>Rp. 15.000</strong></p>
+        <p class="rating">⭐ 4.9</p>
+        <p>Pengerjaan 1 hari</p>
+        <button class="btn-cart" onclick="addToOrder('Setrika', 15000)">🛒</button>
+      </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="address">
+            <h4>Alamat Anda <span style="float:right; font-size: 0.8rem; cursor: pointer;" onclick="editAlamat()">+ Edit alamat</span></h4>
+            <div id="alamat-output" class="alamat-output">
+              jln. Suryakencana No. 97, Desa. Seruni, Kec. Serong, Kab. Cianjir, Prov. Jawa Selatan
+            </div>
+          
+            <div class="orders">
+              <h3>Pesanan</h3>
+              <div id="order-list">
+                <p>Tidak Ada Pesanan</p>
+              </div>
+              <div id="total-price">
+                <strong>Total: Rp. 0</strong>
+              </div>
+              <button id="btn-bayar" class="button button-p" style="width: 100%; margin-top: 1rem; display: none;" onclick="bayar()">Bayar</button>
+            </div>
+
+<div id="popup-success" class="popup-overlay" style="display:none;">
+  <div class="popup-content">
+    <img src="verification.png" alt="Success" style="width: 100px; margin: 0 auto; display: block;">
+    <h2>Pembayaran Berhasil!</h2>
+    <p>Terima kasih telah menggunakan layanan kami 😊</p>
+    <button class="button button-p" onclick="closePopup()">Oke</button>
+  </div>
+</div>
+
+
+            
+
+  <script src="pesan.js"></script>
+</body>
+</html>

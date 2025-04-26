@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tentang Kami - BERSIH-IN Laundry</title>
+  <link rel="stylesheet" href="aboutus.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+          <img src="LOGO1.png" alt="Logo Bersih-in" class="logo-navbar">
+        </div>
+      
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a href="landingpage.html">Utama</a></li>
+            <li><a href="pesan.html">Pesan</a></li>
+            <li><a href="TentangKami.html">Tentang Kami</a></li>
+          </ul>
+      
+          <div class="auth-buttons">
+            <a href="#" class="button button-p" onclick="togglePopup('loginPopup')">Masuk</a>
+            <a href="#" class="button button-o" onclick="togglePopup('signupPopup')">Daftar</a>
+          </div>
+        </div>
+      </nav>
+  </header>
+
+  <main class="about">
+    <div class="container content">
+      <div class="image">
+        <img src="aboutus.png" alt="Ilustrasi laundry" />
+      </div>
+      <div class="text">
+        <h1>Tentang Kami</h1>
+        <h2>Cara Baru Nikmatin Hidup Tanpa Ribet!</h2>
+        <p>
+          Selamat datang di <strong>BERSIH-IN Laundry</strong>, tempat di mana cucian kotor bukan lagi masalah. Kami adalah layanan laundry online berbasis teknologi yang hadir untuk satu tujuan: bikin hidup kamu lebih simpel, bersih, dan efisien.
+        </p>
+        <p>
+          Di tengah kesibukan dan hiruk-pikuk kehidupan modern, kami tahu kamu butuh solusi cepat tanpa ngorbanin kualitas. Lewat aplikasi dan website BERSIH-IN, kamu bisa pesan laundry cukup dalam hitungan detik. Kami yang jemput, kami yang antar, dan pastinya… kami yang pastikan pakaianmu kembali dalam kondisi bersih, wangi, dan siap pakai.
+        </p>
+        <div style="text-align: right; margin-top: 20px;">
+          <a href="pesan.html" class="button button-o" style="display: inline-flex; align-items: center; gap: 8px;">
+            Pesan Sekarang
+            <img src="rightArrow.png" alt="Arrow" style="width: 20px; height: 20px;">
+          </a>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+  </main>
+
+  <section style="background-color: #2f1a47; color: white; padding: 60px 0;">
+    <div class="container" style="display: flex; flex-wrap: wrap; gap: 40px;">
+      <div style="flex: 1 1 45%;">
+        <h2 style="font-size: 2rem; margin-bottom: 20px;">Visi</h2>
+        <ul style="list-style: disc; padding-left: 20px;">
+          <li>Menjadi penyedia jasa laundry terbaik dan terpercaya di Indonesia.</li>
+          <li>Membantu memudahkan kehidupan masyarakat dalam urusan laundry harian.</li>
+          <li>Memberikan layanan cepat, bersih, dan ramah lingkungan.</li>
+        </ul>
+      </div>
+      <div style="flex: 1 1 45%;">
+        <h2 style="font-size: 2rem; margin-bottom: 20px;">Misi</h2>
+        <ul style="list-style: disc; padding-left: 20px;">
+          <li>Menyediakan layanan laundry berkualitas tinggi dengan harga yang terjangkau.</li>
+          <li>Memberikan pelayanan cepat, ramah, dan profesional kepada semua pelanggan.</li>
+          <li>Menggunakan teknologi inovatif untuk mempermudah proses pemesanan dan pengantaran.</li>
+          <li>Berkomitmen terhadap kebersihan, kecepatan, dan kenyamanan pelanggan.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <div class="popup" id="loginPopup">
+    <div class="popup-content">
+      <span class="close" onclick="togglePopup('loginPopup')">&times;</span>
+      <h2>Halo! 👋</h2>
+      <p>Selamat datang kembali</p>
+      <div class="input-group">
+        <label for="username">Nama Pengguna</label>
+        <input type="text" id="username" name="username" />
+      </div>    
+      <div class="input-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" />
+      </div>
+      <button onclick="togglePopup('loginPopup')">Masuk</button>
+      <a href="#" onclick="togglePopup('forgotEmailPopup')">Lupa kata sandi?</a>
+      <div class="separator">Masuk dengan</div>
+      <div class="social">
+        <img src="icons8-google-48.png" alt="Google">
+        <img src="icons8-facebook-48.png" alt="Facebook">
+      </div>
+      <p>Belum punya akun? <a href="#" onclick="togglePopup('signupPopup')">Daftar</a></p>
+    </div>
+  </div>
+
+  <div class="popup" id="signupPopup">
+    <div class="popup-content">
+      <span class="close" onclick="togglePopup('signupPopup')">&times;</span>
+      <h2>Halo! 👋</h2>
+      <p>Silakan isi untuk melanjutkan</p>
+  
+      <div class="form-group">
+        <label for="username">Nama Pengguna</label>
+        <input type="text" id="username" placeholder="Masukkan nama pengguna">
+      </div>
+  
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="Masukkan email">
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Kata Sandi</label>
+        <input type="password" id="password" placeholder="Buat kata sandi">
+      </div>
+  
+      <div class="form-group">
+        <label for="confirm-password">Ulangi Kata Sandi</label>
+        <input type="password" id="confirm-password" placeholder="Ulangi kata sandi">
+      </div>
+  
+      <button>Daftar</button>
+      <p>Sudah punya akun? <a href="#" onclick="togglePopup('loginPopup')">Masuk</a></p>
+    </div>
+  </div>
+  
+
+  <div class="popup" id="forgotEmailPopup">
+    <div class="popup-content">
+      <span class="close" onclick="togglePopup('forgotEmailPopup')">&times;</span>
+      <img src="password.png" alt="Reset Password" style="width: 200px;">
+      <h3>Lupa Kata Sandi?</h3>
+      <p>Masukkan email untuk mengatur ulang kata sandi</p>
+      <input type="email" placeholder="E-mail">
+      <button onclick="togglePopup('forgotCodePopup')">Konfirmasi e-mail</button>
+    </div>
+  </div>
+
+  <div class="popup" id="forgotCodePopup">
+    <div class="popup-content">
+      <div class="popup-header">
+        <span class="back" onclick="togglePopup('forgotCodePopup')">&#8592; Lupa Kata Sandi</span>
+      </div>
+      <img src="password.png" alt="Reset Password" class="popup-image">
+      
+      <h3 class="popup-title">Lupa Kata Sandi?</h3>
+      <p class="popup-desc">Masukan E-mail untuk mengatur ulang kata sandi</p>
+      
+      <div class="otp-inputs">
+        <input type="text" maxlength="1">
+        <input type="text" maxlength="1">
+        <input type="text" maxlength="1">
+        <input type="text" maxlength="1">
+      </div>
+  
+      <button class="btn-kirim">Konfirmasi kode</button>
+    </div>
+  </div>
+  
+  <script src="aboutus.js"></script>
+</body>
+</html>

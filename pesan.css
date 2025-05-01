@@ -70,13 +70,13 @@ transition: 0.3s ease;
 }
 
 .button-p {
-background-color: #C1E47F;
-color: #2E0E53;
+background-color: #5e3b76;
+color: white;
 border: none;
 }
 
 .button-p:hover {
-background-color: #c3f74d;
+background-color: #5e3b76a5;
 }
 
 .button-o {
@@ -356,7 +356,7 @@ background-color: #f5f5ff;
   .card img {
     width: 100%;
     height: 150px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 10px;
   }
   .card h4 {
@@ -378,47 +378,85 @@ background-color: #f5f5ff;
     cursor: pointer;
     float: right;
   }
-  .sidebar {
-    flex: 1;
-    margin-left: 2rem;
-  }
-  .address, .orders {
-    background-color: #ddd;
-    border-radius: 10px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-  .orders h3 {
-    margin-top: 0;
-  }
-  .order-item {
-    background: white;
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  .wrapper {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem;
+    align-items: flex-start;
   }
-  .btn-undo {
-    background-color: #ef9a9a;
-    border: none;
-    padding: 0.3rem 0.6rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    font-family: 'Sora', sans-serif;
+  
+  .sidebar-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+    max-width: 300px;
+    height: 100%; /* Tambahkan */
+  }
+  
+  .sidebar1,
+  .sidebar2 {
+    flex: 1;
+    max-width: 300px;
+    background: #e6e6e6;
+    padding: 1rem;
+    border-radius: 10px;
   }
 
-.alamat-output {
-background-color: #ddd;
-padding: 1rem;
-border-radius: 10px;
-margin-top: 0.5rem;
-font-size: 0.95rem;
-line-height: 1.5;
-}
+  .sidebar-wrapper{
+    height: 100%;
+  }
+
+  .sidebar-wrapper{
+    flex: 1;
+  }
+  
+  .sidebar2 {
+    max-width: 320px;
+  }
+  
+  
+  .tab-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .tab-button {
+    flex: 1;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .tab-button.active {
+    border-color: purple;
+    color: purple;
+  }
+  
+  .orders {
+    background: #e6e6e6;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  
+  .tab-content {
+    min-height: 350px;
+    margin-bottom: 1rem;
+  }
+  
+  #total-price {
+    text-align: right;
+    margin-top: 1rem;
+  }
+  
+  
+
 /* POPUP STYLING */
 .popup-overlay {
 position: fixed;
@@ -446,4 +484,20 @@ animation: popupAnim 0.3s ease-out forwards;
 @keyframes popupAnim {
 from { transform: scale(0.7); opacity: 0; }
 to { transform: scale(1); opacity: 1; }
+}
+
+.btn-undo {
+  background-color: #ffb3b3; /* warna merah muda */
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  font-size: 0.85rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-undo:hover {
+  background-color: #ff8080;
 }

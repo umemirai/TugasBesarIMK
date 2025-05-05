@@ -147,7 +147,6 @@ function bayar() {
   document.getElementById('popup-success').style.display = 'block';
   document.getElementById("total-price").innerHTML = "<strong>Total: Rp. 0</strong>";
   cekBayarButton();
-  closePopUp();
 }
 
 function cekBayarButton() {

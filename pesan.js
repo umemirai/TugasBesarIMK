@@ -12,7 +12,30 @@ function showTab(tabName) {
     const btn = document.querySelector(`.tab-button[onclick*="${name}"]`);
     btn.classList.toggle('active', name === tabName);
   });
+
+  if (tabName === 'pesanan') {
+    bayarButton.innerText = 'Bayar';
+    bayarButton.onclick = bayar;
+    cekBayarButton(); // hanya muncul jika ada order
+  } else if (tabName === 'selesai') {
+    bayarButton.innerText = 'Selesai';
+    bayarButton.onclick = () => {
+      const selesaiTab = document.getElementById("tab-selesai");
+      selesaiTab.innerHTML = '<p>Selesai kosong</p>'; // tampilkan pesan kosong lagi
+    
+      // Opsional: reset semua data internal jika perlu
+      total = 0;
+      Object.keys(orders).forEach(k => delete orders[k]);
+      orderList.innerHTML = '<p>Tidak Ada Pesanan</p>';
+      totalPriceElement.innerHTML = '<strong>Total: Rp. 0</strong>';
+    
+      alert('Semua pesanan telah selesai!');
+      showTab('pesanan'); // balik ke tab awal
+  }
 }
+}
+
+
 
 function addToOrder(name, price) {
   if (orderList.children.length === 1 && orderList.children[0].tagName === 'P') {
@@ -74,62 +97,6 @@ function addToOrder(name, price) {
 
 const bayarButton = document.getElementById('btn-bayar');
 
-// function selesaikanPembayaran() {
-//   const orderList = document.getElementById("order-list");
-//   const prosesTab = document.getElementById("tab-proses");
-//   const selesaiTab = document.getElementById("tab-selesai");
-//   const totalPriceElement = document.getElementById("total-price");
-
-//   const items = orderList.querySelectorAll(".order-item");
-
-//   if (items.length === 0) {
-//     closePopUp(); // Tetap tutup popup walau tidak ada item
-//     return;
-//   }
-
-//   // Bersihkan teks default
-//   if (prosesTab.textContent.trim() === "Proses kosong") {
-//     prosesTab.innerHTML = "";
-//   }
-
-//   items.forEach(item => {
-//     // Hapus tombol undo jika ada
-//     const undoBtn = item.querySelector(".undo-button");
-//     if (undoBtn) undoBtn.remove();
-
-//     // Tambahkan tombol selesai
-//     const selesaiBtn = document.createElement("button");
-//     selesaiBtn.innerText = "Selesai";
-//     selesaiBtn.className = "button selesai-button";
-//     selesaiBtn.style.marginTop = "0.5rem";
-
-//     selesaiBtn.addEventListener("click", () => {
-//       if (selesaiTab.textContent.trim() === "Selesai kosong") {
-//         selesaiTab.innerHTML = "";
-//       }
-//       selesaiBtn.remove();
-//       selesaiTab.appendChild(item);
-//     });
-
-//     item.appendChild(selesaiBtn);
-//     prosesTab.appendChild(item);
-//   });
-
-//   // Reset pesanan
-//   orderList.innerHTML = "<p>Tidak Ada Pesanan</p>";
-//   totalPriceElement.innerHTML = "<strong>Total: Rp. 0</strong>";
-//   document.getElementById("btn-bayar").style.display = "none";
-
-//   if (typeof orders === 'object') {
-//     for (let key in orders) delete orders[key];
-//   }
-
-//   cekBayarButton();
-
-//   closePopUp(); // Tutup popup di akhir
-// }
-
-
 function bayar() {
   const orderList = document.getElementById("order-list");
   const prosesTab = document.getElementById("tab-proses");
@@ -177,15 +144,10 @@ function bayar() {
 
   // Sembunyikan tombol bayar dan reset total
   document.getElementById("btn-bayar").style.display = "none";
+  document.getElementById('popup-success').style.display = 'block';
   document.getElementById("total-price").innerHTML = "<strong>Total: Rp. 0</strong>";
   cekBayarButton();
-  document.getElementById('popup-success').style.display = 'none';
   closePopUp();
-}
-
-function closePopUp() {
-  document.getElementById('popup-success').style.display = 'none';
-  selesaikanPembayaran();
 }
 
 function cekBayarButton() {
@@ -196,6 +158,10 @@ function cekBayarButton() {
   }
 }
 
+function closePopUp() {
+  document.getElementById('popup-success').style.display = 'none';
+  selesaikanPembayaran();
+}
 
 bayarButton.addEventListener('click', bayar);
 
